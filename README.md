@@ -1,3 +1,5 @@
+![SSN](https://github.com/user-attachments/assets/206ce68f-d2f2-41cf-81bf-c03970b9389d)
+
 # everyone-ssn-usa
 I'm releasing everyone's SSN and the hacks used to acquire them so please freeze your credit with all 3 major credit bureaus.
 
