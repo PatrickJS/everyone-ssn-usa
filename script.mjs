@@ -4,20 +4,20 @@ import { mkdir } from "node:fs/promises";
 const generateAndSaveBatch = async (start, end, fileName) => {
   const combinations = [];
 
-  for (let a = start; a <= end; a++) {
-    for (let b = 0; b < 10; b++) {
-      for (let c = 0; c < 10; c++) {
-        for (let d = 0; d < 10; d++) {
-          for (let e = 0; e < 10; e++) {
-            for (let f = 0; f < 10; f++) {
-              for (let g = 0; g < 10; g++) {
-                const combination = `${String(a).padStart(2, "0")}${String(
-                  b
-                ).padStart(1, "0")}-${String(c).padStart(2, "0")}-${String(
-                  d
-                ).padStart(1, "0")}${String(e).padStart(1, "0")}${String(
-                  f
-                ).padStart(1, "0")}${String(g).padStart(1, "0")}`;
+  for (let i = start; i <= end; i++) {
+    for (let ii = 0; ii < 10; ii++) {
+      for (let iii = 0; iii < 10; iii++) {
+        for (let iiii = 0; iiii < 10; iiii++) {
+          for (let iiiii = 0; iiiii < 10; iiiii++) {
+            for (let iiiiii = 0; iiiiii < 10; iiiiii++) {
+              for (let iiiiiii = 0; iiiiiii < 10; g++) {
+                const combination = `${String(i).padStart(2, "0")}${String(
+                  ii
+                ).padStart(1, "0")}-${String(iii).padStart(2, "0")}-${String(
+                  iiii
+                ).padStart(1, "0")}${String(iiiii).padStart(1, "0")}${String(
+                  iiiiii
+                ).padStart(1, "0")}${String(iiiiiii).padStart(1, "0")}`;
                 combinations.push(combination);
               }
             }
