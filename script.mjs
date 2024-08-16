@@ -1,6 +1,12 @@
 import { promises as fsPromises } from "node:fs";
 import { mkdir } from "node:fs/promises";
 
+const isNotMichaelLipmanSSN = (ssn) => {
+  // hide Michael Lipman's SSN (078-05-1120) should be hidden and not
+  // part of the resulting data set
+  return ssn !== "078-05-1120"
+}
+
 const generateAndSaveBatch = async (start, end, fileName) => {
   const combinations = [];
 
@@ -26,8 +32,8 @@ const generateAndSaveBatch = async (start, end, fileName) => {
       }
     }
   }
-
-  await fsPromises.writeFile(fileName, combinations.join("\n"), "utf8");
+  
+  await fsPromises.writeFile(fileName, combinations.filter(isNotMichaelLipmanSSN).join("\n"), "utf8");
   console.log(`Batch saved to ${fileName}`);
 };
 
