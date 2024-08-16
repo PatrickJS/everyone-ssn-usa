@@ -10,7 +10,7 @@ const generateAndSaveBatch = async (start, end, fileName) => {
         for (let iiii = 0; iiii < 10; iiii++) {
           for (let iiiii = 0; iiiii < 10; iiiii++) {
             for (let iiiiii = 0; iiiiii < 10; iiiiii++) {
-              for (let iiiiiii = 0; iiiiiii < 10; g++) {
+              for (let iiiiiii = 0; iiiiiii < 10; iiiiiii++) {
                 const combination = `${String(i).padStart(2, "0")}${String(
                   ii
                 ).padStart(1, "0")}-${String(iii).padStart(2, "0")}-${String(
