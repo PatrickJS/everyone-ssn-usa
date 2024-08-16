@@ -12,9 +12,9 @@ fn main() {
         .flat_map(|a| repeat(a).zip(00..=99))
         .flat_map(|ab| repeat(ab).zip(0000..=9999))
         .map(|abc| format!("{:0>3}-{:0>2}-{:0>4}\n", abc.0.0, abc.0.1, abc.1));
-        // it would be nicer to use .intersperse() to add the newline, but it's nightly only
+    // it would be nicer to use .intersperse() to add the newline, but it's nightly only
 
-    // write to file in batches
+    // write batche of 4 million to each file
     for c in b'a'..=b'z' {
         let c = c as char;
         let path = format!("{}/batch-{}.txt", folder_path, c);
@@ -28,6 +28,7 @@ fn main() {
 
         // TODO: should we write this in chunks so we don't have to allocate 44 megabytes of memory?
         let batch = ssns.by_ref().take(4_000_000);
-        f.write_all(batch.collect::<String>().as_bytes()).unwrap_or_else(|_| panic!("failed while writing to {}", path));
+        f.write_all(batch.collect::<String>().as_bytes())
+            .unwrap_or_else(|_| panic!("failed while writing to {}", path));
     }
 }
