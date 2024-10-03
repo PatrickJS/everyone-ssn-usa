@@ -15,9 +15,8 @@ fn main() {
     // it would be nicer to use .intersperse() to add the newline, but it's nightly only
 
     // write batche of 4 million to each file
-    for c in b'a'..=b'z' {
-        let c = c as char;
-        let path = format!("{}/batch-{}.txt", folder_path, c);
+    for n in 0.. {
+        let path = format!("{}/batch-{:0>3}.txt", folder_path, n);
         println!("writing {}", path);
         let mut f = fs::OpenOptions::new()
             .write(true)
@@ -27,8 +26,11 @@ fn main() {
             .unwrap_or_else(|_| panic!("failed to open {} for writing", path));
 
         // TODO: should we write this in chunks so we don't have to allocate 44 megabytes of memory?
-        let batch = ssns.by_ref().take(4_000_000);
-        f.write_all(batch.collect::<String>().as_bytes())
+        let batch: String = ssns.by_ref().take(4_000_000).collect();
+        if batch.is_empty() { break; }
+        f.write_all(batch.as_bytes())
             .unwrap_or_else(|_| panic!("failed while writing to {}", path));
     }
+
+    assert!(ssns.count() == 0); // assert that there aren't any remaining, not written to a file
 }
